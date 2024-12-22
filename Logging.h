@@ -1,12 +1,14 @@
 #pragma once
 
 #include <iostream>
-#include <fstream>
+// #include <fstream>
 #include <sstream>
 #include <string>
 
 namespace logging {
 
+  // Allows for applications to create their own "loggers" which can be saved
+  // to files independantly and can use a custom prefix.
   struct LoggingTemplate {
     std::string filename;
     bool logToFile = false;
@@ -15,19 +17,12 @@ namespace logging {
 
 namespace globals {
 
+  // Serves as a default template that all logging functions wil use by default.
+  // Can be changed by the application if wanted.
+  //
   inline LoggingTemplate g_DefaultLoggingTemplate{};
 
-} // namespace globals
-
-namespace internal {
-  template <typename T>
-  std::string toString(const T& value);
-
-  void concatenate(std::ostringstream& oss) {}
-
-  template <typename T, typename... Args>
-  void concatenate(std::ostringstream& oss, const T& first, const Args&... args);
-} // namespace internal
+} // namespace logging::globals
 
   template <typename... Args>
   void Info(const LoggingTemplate& temp=globals::g_DefaultLoggingTemplate, const Args&... args);

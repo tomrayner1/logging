@@ -4,7 +4,7 @@ namespace logging {
 
   template <typename... Args>
   void Info(const LoggingTemplate& temp, const Args&... args) {
-
+    
   }
 
   template <typename... Args>
@@ -21,20 +21,22 @@ namespace logging {
   void Debug(const LoggingTemplate& temp, const Args&... args) {
 
   }
-} // namespace logging
-namespace logging::internal {
 
-  template <typename T>
-  std::string toString(const T& value) {
+  namespace internal {
+    void concatenate(std::ostringstream& oss) {}
+
+    template <typename T>
+    std::string toString(const T& value) {
       std::ostringstream oss;
       oss << value;
       return oss.str();
-  }
+    }
 
-  template <typename T, typename... Args>
-  void concatenate(std::ostringstream& oss, const T& first, const Args&... args) {
-    oss << logging::internal::toString(first);
-    logging::internal::concatenate(oss, args...);
-  }
+    template <typename T, typename... Args>
+    void concatenate(std::ostringstream& oss, const T& first, const Args&... args) {
+      oss << logging::internal::toString(first);
+      logging::internal::concatenate(oss, args...);
+    }
+  } // namespace internal
 
-} // namespace logging::internal
+} // namespace logging
