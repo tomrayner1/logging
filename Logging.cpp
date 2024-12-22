@@ -37,6 +37,6 @@ namespace logging {
       oss << logging::internal::toString(first);
       logging::internal::concatenate(oss, args...);
     }
-  } // namespace internal
+  } // namespace logging::internal
 
 } // namespace logging
