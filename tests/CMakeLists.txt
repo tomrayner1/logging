@@ -3,4 +3,4 @@ add_executable(test_logging
 )
 
 target_include_directories(test_logging PRIVATE ../)
-target_link_libraries(test_logging logging)
+target_link_libraries(test_logging PRIVATE logging)
