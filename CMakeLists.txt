@@ -13,7 +13,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(BUILD_TESTS "Builds all tests" OFF)
 
-add_library(logging STATIC Logging.cpp Logging.h)
+add_library(logging STATIC logging.cpp logging.h)
+target_include_directories(logging PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 if(BUILD_TESTS)
   add_subdirectory(tests)
