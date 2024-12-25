@@ -1,8 +1,9 @@
-
-#include "Logging.h"
+#include <logging.h>
 
 int main() {
-  logging::Info(logging::globals::g_DefaultLoggingTemplate, "Testing");
+  using namespace lg;
+
+  Info("Printing 42 as an integer: ", 42);
 
   return 0;
 }
