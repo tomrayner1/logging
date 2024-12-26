@@ -17,5 +17,7 @@ add_library(logging STATIC logging.cpp logging.h)
 target_include_directories(logging PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 if(BUILD_TESTS)
-  add_subdirectory(tests)
+  # TestMain.cpp
+  add_executable(testmain TestMain.cpp)
+  target_link_libraries(testmain PRIVATE logging)
 endif()
